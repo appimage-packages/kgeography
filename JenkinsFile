@@ -45,7 +45,6 @@ node('linux') {
                DOCKER_IMAGE = 'sgclark/trusty-qt580' //current default qt580, will have debug version soon and 5.9
                KF5 = true // default true, because well kde rocks.
             }
-            def
         }
         stage( 'Build' ) {
             sh 'bundle exec tooling/aci/contain.rb'
