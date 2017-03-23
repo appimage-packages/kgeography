@@ -41,25 +41,3 @@ gem 'ci_reporter_test_unit',
     git: 'https://github.com/apachelogger/ci_reporter_test_unit',
     branch: 'test-unit-3'
 gem 'test-unit', '~> 3.0'
-
-group :development, :test do
-  gem 'equivalent-xml'
-  gem 'mocha'
-  gem 'net-scp'
-  gem 'parallel_tests'
-  gem 'rack'
-  gem 'rake', '~> 12.0'
-  gem 'rake-notes'
-  gem 'rubocop', '>= 0.38'
-  gem 'rubocop-checkstyle_formatter'
-  gem 'ruby-progressbar'
-  gem 'simplecov'
-  gem 'simplecov-rcov'
-  gem 'terminal-table'
-  gem 'vcr', '>= 3.0.1'
-  gem 'webmock'
-end
-
-group :s3 do
-  gem 'aws-sdk-v1'
-end
