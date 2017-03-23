@@ -26,7 +26,6 @@ node('linux') {
         WORKSPACE = pwd()
         DOCKER_IMAGE = 'sgclark/trusty-qt580' //current default qt580, will have debug version soon and 5.9
         KF5 = true // default true, because well kde rocks.
-        PATH = '/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims'
     }
    currentBuild.result = "SUCCESS"
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), \
@@ -44,8 +43,9 @@ node('linux') {
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'kgeography']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/kgeography']]]
        }
         stage( 'Setup' ) {
-            sh 'echo $PATH'
-            sh 'eval "$(rbenv init -)" && rbenv local 2.3.0 && bundle install'
+           sh 'export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PATH'
+           sh 'echo $PATH'
+           sh 'eval "$(rbenv init -)" && rbenv local 2.3.0 && bundle install'
         }
         stage( 'Build' ) {
             sh 'bundle exec ruby tooling/aci/contain.rb'
