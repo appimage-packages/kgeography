@@ -44,10 +44,10 @@ node('linux') {
                DOCKER_IMAGE = 'sgclark/trusty-qt580' //current default qt580, will have debug version soon and 5.9
                KF5 = true // default true, because well kde rocks.
                PATH = '/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims'
-               sh 'bundle install'
             }
         }
         stage( 'Build' ) {
+            sh 'bundle install'
             sh 'bundle exec ruby tooling/aci/contain.rb'
        }
        stage('Copy Artifacts') {
