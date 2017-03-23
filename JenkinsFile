@@ -21,8 +21,14 @@ THE SOFTWARE.
 */
 
 node('linux') {
-
-    currentBuild.result = "SUCCESS"
+   environment {
+        PROJECT_NAME = 'kgeography'
+        WORKSPACE = pwd()
+        DOCKER_IMAGE = 'sgclark/trusty-qt580' //current default qt580, will have debug version soon and 5.9
+        KF5 = true // default true, because well kde rocks.
+        PATH = '/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims'
+    }
+   currentBuild.result = "SUCCESS"
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), \
    [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/appimage-packages/kgeography/'], pipelineTriggers([cron('H H(0-2) * * *'), [$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
 
@@ -38,13 +44,6 @@ node('linux') {
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'kgeography']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/kgeography']]]
        }
         stage( 'Setup' ) {
-           environment {
-               PROJECT_NAME = 'kgeography'
-               WORKSPACE = pwd()
-               DOCKER_IMAGE = 'sgclark/trusty-qt580' //current default qt580, will have debug version soon and 5.9
-               KF5 = true // default true, because well kde rocks.
-               PATH = '/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims'
-            }
             sh 'echo $PATH'
             sh 'eval "$(rbenv init -)" && rbenv local 2.3.0 && bundle install'
         }
