@@ -47,7 +47,7 @@ node('linux') {
             }
         }
         stage( 'Build' ) {
-            sh 'bundle exec tooling/aci/contain.rb'
+            sh 'bundle exec ruby tooling/aci/contain.rb'
        }
        stage('Copy Artifacts') {
           step([$class: 'S3BucketPublisher', consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: "ds9-apps/${JOB_NAME}", excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, \
