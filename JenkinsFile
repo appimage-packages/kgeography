@@ -64,12 +64,12 @@ node('linux') {
 
 
 
-    catch (err) {
+              catch (err) {
 
-        currentBuild.result = "FAILURE"
+                 currentBuild.result = "FAILURE"
 
-            echo "FAILURE"
-        throw err
-    }
+                 echo "FAILURE"
+                 throw err
+              }
 
-}
+           }
