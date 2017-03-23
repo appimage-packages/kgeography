@@ -45,7 +45,8 @@ node('linux') {
                KF5 = true // default true, because well kde rocks.
                PATH = '/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims'
             }
-            sh 'rbenv local 2.3.0 && bundle install'
+            sh 'echo $PATH'
+            sh 'eval "$(rbenv init -)" && rbenv local 2.3.0 && bundle install'
         }
         stage( 'Build' ) {
             sh 'bundle exec ruby tooling/aci/contain.rb'
