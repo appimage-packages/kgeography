@@ -23,4 +23,4 @@ echo $WORKSPACE
 ls -ln /
 ls -l /
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
-rspec dependency_rspec.rb --fail-fast
+rspec dependencies_rspec.rb --fail-fast
