@@ -20,5 +20,6 @@
 export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PATH
 export WORKSPACE=`pwd`
 echo $WORKSPACE
-
-cd /in/ && rspec tooling/ci-tooling/aci/spec/recipe_rspec.rb --fail-fast
+rbenv local 2.3.1
+cd /in/tooling/ci-tooling/aci/spec/ && bundle install
+rspec recipe_rspec.rb --fail-fast
