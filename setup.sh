@@ -17,12 +17,10 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
-export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PATH
+export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 export WORKSPACE=`pwd`
 echo $WORKSPACE
-whoami
-ls -l /opt/
-uname -a
-# rbenv local 2.3.1
-# cd /in/tooling/ci-tooling/aci/spec/ && bundle install
-# rspec recipe_rspec.rb --fail-fast
+
+rbenv local 2.3.1
+cd /in/tooling/ci-tooling/aci/spec/ && bundle install
+rspec recipe_rspec.rb --fail-fast
