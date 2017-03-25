@@ -21,5 +21,6 @@ export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 export WORKSPACE=`pwd`
 echo $WORKSPACE
 ls -ln /
+ls -l /
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
-rspec recipe_rspec.rb --fail-fast
+rspec dependency_rspec.rb --fail-fast
