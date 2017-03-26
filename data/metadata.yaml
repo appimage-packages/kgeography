@@ -5,7 +5,7 @@ packages: false
 build_kf5: true
 frameworks:
   - extra-cmake-modules
-  - kmlgui
+  - kxmlgui
   - kwidgetsaddons
   - kcoreaddons
   - kconfigwidgets
