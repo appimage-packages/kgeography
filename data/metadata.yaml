@@ -7,12 +7,12 @@ frameworks:
   - extra-cmake-modules
   - kwidgetsaddons
   - kcoreaddons
-  - kconfigwidgets
+  - kdoctools
   - ki18n
+  - kconfigwidgets
   - kitemviews
   - kiconthemes
   - kcrash
-  - kdoctools
   - kxmlgui
 kde_deps: ''
 type: git
