@@ -7,8 +7,8 @@ frameworks:
   - extra-cmake-modules
   - kwidgetsaddons
   - kcoreaddons
-  - kdoctools
   - ki18n
+  - kdoctools
   - kconfigwidgets
   - kitemviews
   - kiconthemes

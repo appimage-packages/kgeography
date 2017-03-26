@@ -21,8 +21,7 @@ export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 
 ls -ln /
 ls -l /
-sudo chown jenkins.jenkins /appimages
-ls -ln /
-ls -l /
+
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
 rspec dependencies_rspec.rb --fail-fast
+rspec project_rspec.rb --fail-fast
