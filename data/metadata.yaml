@@ -2,51 +2,50 @@ name: kgeography
 binary: kgeography
 packages: ''
   #app specifc
+build_kf5: true
 frameworks:
-  build_kf5: true
-  frameworks:
-    - extra-cmake-modules
-    - kcoreaddons
-    - ki18n
-    - kitemviews
-    - kconfig
-    - polkit-qt-1
-    - kauth
-    - kcodecs
-    - karchive
-    - kdoctools
-    - kguiaddons
-    - kwidgetsaddons
-    - kconfigwidgets
-    - kiconthemes
-    - kcompletion
-    - kwindowsystem
-    - kcrash
-    - kdbusaddons
-    - kservice
-    - sonnet
-    - ktextwidgets
-    - kglobalaccel
-    - attica
-    - kxmlgui
-    - solid
-    - kbookmarks
-    - kjobwidgets
-    - phonon
-    - phonon-gstreamer
-    - knotifications
-    - gpgmepp
-    - kwallet
-    - kio
-    - knewstuff
-    - breeze-icons
-    - kactivities
-    - kpackage
-    - kdeclarative
-    - kwayland
-    - plasma-framework
-    - kdecoration
-    - breeze
+  - extra-cmake-modules
+  - kcoreaddons
+  - ki18n
+  - kitemviews
+  - kconfig
+  - polkit-qt-1
+  - kauth
+  - kcodecs
+  - karchive
+  - kdoctools
+  - kguiaddons
+  - kwidgetsaddons
+  - kconfigwidgets
+  - kiconthemes
+  - kcompletion
+  - kwindowsystem
+  - kcrash
+  - kdbusaddons
+  - kservice
+  - sonnet
+  - ktextwidgets
+  - kglobalaccel
+  - attica
+  - kxmlgui
+  - solid
+  - kbookmarks
+  - kjobwidgets
+  - phonon
+  - phonon-gstreamer
+  - knotifications
+  - gpgmepp
+  - kwallet
+  - kio
+  - knewstuff
+  - breeze-icons
+  - kactivities
+  - kpackage
+  - kdeclarative
+  - kwayland
+  - plasma-framework
+  - kdecoration
+  - breeze
 type: git
 url: http://anongit.kde.org/kgeography
 buildsystem: cmake
