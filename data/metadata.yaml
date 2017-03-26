@@ -5,7 +5,6 @@ packages: false
 build_kf5: true
 frameworks:
   - extra-cmake-modules
-  - kxmlgui
   - kwidgetsaddons
   - kcoreaddons
   - kconfigwidgets
@@ -14,6 +13,7 @@ frameworks:
   - kiconthemes
   - kcrash
   - kdoctools
+  - kxmlgui
 kde_deps: ''
 type: git
 url: http://anongit.kde.org/kgeography
