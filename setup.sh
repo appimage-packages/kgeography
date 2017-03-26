@@ -18,8 +18,10 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
-export WORKSPACE=`pwd`
-echo $WORKSPACE
+
+ls -ln /
+ls -l /
+sudo chown jenkins.jenkins /appimages
 ls -ln /
 ls -l /
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
