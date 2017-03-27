@@ -105,6 +105,7 @@ find . -type f -exec file {} \; | grep "not stripped"
 cp /usr/lib/x86_64-linux-gnu/libkrb5* ./lib/
 get_desktopintegration <%= name %>
 cd /source/
+rm -rfv appimage-exec-wrapper || true
 git clone git://anongit.kde.org/scratch/brauch/appimage-exec-wrapper
 cd /source//appimage-exec-wrapper/
 make clean
