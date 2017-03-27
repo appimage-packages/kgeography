@@ -155,7 +155,7 @@ APPIMAGEFILENAME="<%= name %>-git$DATE-$ARCH.AppImage"
 #Re set LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/usr/lib:/opt/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib64:/lib
 gpg2 --import /home/jenkins/.gnupg/appimage.key
-./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimage/$APPIMAGEFILENAME
-zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimage/$APPIMAGEFILENAME /appimage/$APPIMAGEFILENAME
-./appimagetool-x86_64.AppImage -v -s -u "zsync|<%= name %>-latest-$ARCH.AppImage" /<%= name %>.AppDir /appimage/<%= name %>-latest-$ARCH.AppImage
-zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimage/<%= name %>_latestversion.zsync /appimage/$APPIMAGEFILENAME
+./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimages/$APPIMAGEFILENAME
+zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimages/$APPIMAGEFILENAME /appimages/$APPIMAGEFILENAME
+./appimagetool-x86_64.AppImage -v -s -u "zsync|<%= name %>-latest-$ARCH.AppImage" /<%= name %>.AppDir /appimages/<%= name %>-latest-$ARCH.AppImage
+zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimages/<%= name %>_latestversion.zsync /appimages/$APPIMAGEFILENAME
