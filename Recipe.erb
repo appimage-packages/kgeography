@@ -145,8 +145,7 @@ cd /
 
 #Appstream support for appimagetool
 rm -rfv /source/*
-chown -R jenkins.jenkins  /<%= name %>.AppDir
-su jenkins
+
 cd ~
 wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
 chmod a+x appimagetool-x86_64.AppImage
