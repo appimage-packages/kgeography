@@ -23,5 +23,6 @@ ls -ln /
 ls -l /
 
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
+rspec setup_project_rspec.rb --fail-fast
 rspec dependencies_rspec.rb --fail-fast
 rspec project_rspec.rb --fail-fast
