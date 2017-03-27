@@ -37,11 +37,14 @@ cd /<%= name %>.AppDir
 mv /app.Dir/usr/bin/<%= binary %> .
 mv /app.Dir/usr/share/applications/org.kde.<%= binary %>.desktop <%= binary %>.desktop
 cp /app.Dir/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
+
+mkdir ./etc; cp /etc/mime.types $_
+update-mime-database ./usr/share/mime
 mv /app.Dir/* .
 
-#All the plugins do not seem to be getting in. Manual copy.
-mkdir -p ./plugins; cp -r /opt/usr/plugins/{bearer,generic} $_
 # Run appimage once with DEBUG_QT_PLUGINS=1 to complete
+mkdir -p ./plugins; cp -r /opt/usr/plugins/{bearer,generic} $_
+
 
 #Uncomment for sound
 #cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend
@@ -51,15 +54,12 @@ mkdir -p ./plugins; cp -r /opt/usr/plugins/{bearer,generic} $_
 #cp /opt/usr/lib/gstreamer-1.0/* ./lib/
 #cp /usr/lib/x86_64-linux-gnu/pulseaudio/*.so* ./lib/
 #mv /opt/usr/libexec/gstreamer-1.0/* ./usr/bin || true
+
 rsync -aruxv --progress /opt/usr/resources/ ./usr/bin/
 rsync -aruxv --progress /opt/usr/translations/ ./usr/bin/
 
 mkdir ./lib
 mv /opt/usr/libexec/Qt* ./usr/bin/ || true
-
-
-cp /etc/mime.types ./etc/
-update-mime-database ./usr/share/mime
 
 unset LD_LIBRARY_PATH
 ../linuxdeployqt-1-x86_64.AppImage <%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
