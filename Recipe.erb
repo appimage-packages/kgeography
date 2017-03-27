@@ -39,6 +39,7 @@ mv /app.Dir/usr/share/applications/org.kde.<%= binary %>.desktop <%= binary %>.d
 cp /app.Dir/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
 
 mkdir ./etc; cp /etc/mime.types $_
+cp -rfv /usr/share/mime ./usr/share/
 update-mime-database ./usr/share/mime
 mv /app.Dir/* .
 
