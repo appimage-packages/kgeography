@@ -20,26 +20,14 @@
 
 cd /
 
-# Get helper functions
-wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
-. ./functions.sh
-rm -f functions.sh
-
-mkdir /<%= name %>.AppDir/
-
-cd /
-wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
-chmod a+x linuxdeployqt-1-x86_64.AppImage
-
-cd /<%= name %>.AppDir
-
+cd /app.Dir
 #Move binary/desktop/icon into AppDir
 mv /app.Dir/usr/bin/<%= binary %> .
 mv /app.Dir/usr/share/applications/org.kde.<%= binary %>.desktop <%= binary %>.desktop
 cp /app.Dir/usr/share/icons/hicolor/48x48/apps/*<%= name %>* .
 
 mkdir ./etc; cp /etc/mime.types $_
-mv /app.Dir/* .
+
 cp -rfv /usr/share/mime ./usr/share/
 update-mime-database ./usr/share/mime
 
@@ -118,9 +106,9 @@ git clone git://anongit.kde.org/scratch/brauch/appimage-exec-wrapper
 cd /source//appimage-exec-wrapper/
 make clean
 make
-cp -v exec.so /<%= name %>.AppDir/exec_wrapper.so
+cp -v exec.so /app.Dir//exec_wrapper.so
 rm -rfv  /app/src/appimage-exec-wrapper
-cd /<%= name %>.AppDir
+cd /app.Dir/
 rm AppRun
 #Create AppRun
 cat > AppRun << EOF
@@ -154,10 +142,6 @@ cd /
 #Appstream support for appimagetool
 rm -rfv /source/*
 
-cd ~
-wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
-chmod a+x appimagetool-x86_64.AppImage
-
 ARCH=$(arch)
 DATE=$(date +"%Y%m%d")
 
@@ -166,7 +150,7 @@ APPIMAGEFILENAME="<%= name %>-git$DATE-$ARCH.AppImage"
 #Re set LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/usr/lib:/opt/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib64:/lib
 gpg2 --import /home/jenkins/.gnupg/appimage.key
-./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimages/$APPIMAGEFILENAME
+./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /app.Dir/ /appimages/$APPIMAGEFILENAME
 zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/$APPIMAGEFILENAME" -o /appimages/$APPIMAGEFILENAME.zsync /appimages/$APPIMAGEFILENAME
-./appimagetool-x86_64.AppImage -v -s -u "zsync|<%= name %>-latest-$ARCH.AppImage" /<%= name %>.AppDir /appimages/<%= name %>-latest-$ARCH.AppImage
+./appimagetool-x86_64.AppImage -v -s -u "zsync|<%= name %>-latest-$ARCH.AppImage" /app.Dir/ /appimages/<%= name %>-latest-$ARCH.AppImage
 zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/<%= name %>-master-appimage/<%= name %>-latest-$ARCH.AppImage" -o /appimages/<%= name %>_latestversion.zsync /appimages/$APPIMAGEFILENAME

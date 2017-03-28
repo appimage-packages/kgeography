@@ -19,8 +19,16 @@
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 
-ls -ln /
-ls -l /
+# Get helper functions
+wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+. ./functions.sh
+rm -f functions.sh
+
+cd ~
+wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
+chmod a+x appimagetool-x86_64.AppImage
+wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
+chmod a+x linuxdeployqt-1-x86_64.AppImage
 
 cd /in/tooling/ci-tooling/aci/spec/ && bundle install
 rspec setup_project_rspec.rb --fail-fast
