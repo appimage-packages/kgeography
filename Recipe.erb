@@ -49,7 +49,8 @@ mkdir -p ./plugins; cp -r /opt/usr/plugins/{bearer,generic} $_
 mv /opt/usr/plugins/kf5/* ./plugins/ || true
 
 #move arch libs into same dir as rest
-mv /opt/usr/lib/x86_64-linux-gnu/pkgconfig /opt/usr/lib/
+mv /opt/usr/lib/x86_64-linux-gnu/pkgconfig/* /opt/usr/lib/pkgconfig/
+rm /opt/usr/lib/x86_64-linux-gnu/pkgconfig
 mv /opt/usr/lib/x86_64-linux-gnu/cmake /opt/usr/lib/
 mv /opt/usr/lib/x86_64-linux-gnu/* /opt/usr/lib/
 
