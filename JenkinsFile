@@ -41,7 +41,7 @@ node('linux') {
                     }
                     stage( 'Setup' ) {
                        sh 'echo $PATH'
-                       sh 'eval "$(rbenv init -)" && rbenv local 2.3.0 && bundle install'
+                       sh 'eval "$(rbenv init -)" && rbenv local 2.3.1 && bundle install'
                     }
                     stage( 'Build' ) {
                        sh 'bundle exec ruby tooling/aci/contain.rb'
@@ -49,10 +49,10 @@ node('linux') {
                     stage('Copy Artifacts') {
                        step([$class: 'S3BucketPublisher', consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: "ds9-apps/${JOB_NAME}", excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, \
                        managedArtifacts: false, noUploadOnFailure: true, selectedRegion: 'eu-central-1', showDirectlyInBrowser: true, \
-                       sourceFile: 'appimage/*.AppImage', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'UNSTABLE', profileName: 'ds9-apps', userMetadata: []])
+                       sourceFile: 'appimages/*.AppImage', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'UNSTABLE', profileName: 'ds9-apps', userMetadata: []])
                        step([$class: 'S3BucketPublisher', consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: "ds9-apps/${JOB_NAME}", excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, \
                        managedArtifacts: false, noUploadOnFailure: true, selectedRegion: 'eu-central-1', showDirectlyInBrowser: true, \
-                       sourceFile: 'appimage/*.zsync', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'UNSTABLE', profileName: 'ds9-apps', userMetadata: []])
+                       sourceFile: 'appimages/*.zsync', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'UNSTABLE', profileName: 'ds9-apps', userMetadata: []])
                     }
                     stage('Tests') {
                        step([$class: 'LogParserPublisher', failBuildOnError: true, projectRulePath: 'tooling/ci-tooling/aci/parser.rules', showGraphs: true, unstableOnWarning: true, useProjectRule: true])
