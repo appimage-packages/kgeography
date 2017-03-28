@@ -23,8 +23,6 @@ export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 rm -rfv /app.Dir/*
 
 cd ~
-wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"
-chmod a+x appimagetool-x86_64.AppImage
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
@@ -33,3 +31,4 @@ rspec setup_project_rspec.rb --fail-fast
 rspec dependencies_rspec.rb --fail-fast
 rspec project_rspec.rb --fail-fast
 rspec recipe_rspec.rb --fail-fast
+rspec create_appimage_rspec.rb --fail-fast
