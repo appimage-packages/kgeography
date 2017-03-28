@@ -51,7 +51,8 @@ mv /opt/usr/plugins/kf5/* ./plugins/ || true
 #move arch libs into same dir as rest
 mv /opt/usr/lib/x86_64-linux-gnu/pkgconfig/* /opt/usr/lib/pkgconfig/
 rmdir /opt/usr/lib/x86_64-linux-gnu/pkgconfig
-mv /opt/usr/lib/x86_64-linux-gnu/cmake /opt/usr/lib/
+mv /opt/usr/lib/x86_64-linux-gnu/cmake/* /opt/usr/lib/cmake/
+rmdir /opt/usr/lib/x86_64-linux-gnu/cmake
 mv /opt/usr/lib/x86_64-linux-gnu/* /opt/usr/lib/
 
 #Uncomment for sound
