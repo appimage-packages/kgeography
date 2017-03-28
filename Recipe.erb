@@ -46,6 +46,8 @@ update-mime-database ./usr/share/mime
 # Run appimage once with DEBUG_QT_PLUGINS=1 to complete
 mkdir -p ./plugins; cp -r /opt/usr/plugins/{bearer,generic} $_
 
+#move arch libs into same dir as rest
+mv /opt/usr/lib/x86_64-linux-gnu/* /opt/usr/lib/
 
 #Uncomment for sound
 #cp -rfv /opt/usr/lib/qt5/plugins/phonon4qt5_backend
@@ -159,6 +161,6 @@ APPIMAGEFILENAME="<%= name %>-git$DATE-$ARCH.AppImage"
 export LD_LIBRARY_PATH=/opt/usr/lib:/opt/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib64:/lib
 gpg2 --import /home/jenkins/.gnupg/appimage.key
 ./appimagetool-x86_64.AppImage -v -s -u "zsync|$APPIMAGEFILENAME" /<%= name %>.AppDir /appimages/$APPIMAGEFILENAME
-zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimages/$APPIMAGEFILENAME /appimages/$APPIMAGEFILENAME
+zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimages/$APPIMAGEFILENAME.zsync /appimages/$APPIMAGEFILENAME
 ./appimagetool-x86_64.AppImage -v -s -u "zsync|<%= name %>-latest-$ARCH.AppImage" /<%= name %>.AppDir /appimages/<%= name %>-latest-$ARCH.AppImage
 zsyncmake -u "https://s3-eu-central-1.amazonaws.com/ds9-apps/ark-appimage/master/$APPIMAGEFILENAME" -o /appimages/<%= name %>_latestversion.zsync /appimages/$APPIMAGEFILENAME
