@@ -21,10 +21,6 @@ export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
 
 # move me to jenkisnfile
 rm -rfv /app.Dir/*
-# Get helper functions
-wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
-. ./functions.sh
-rm -f functions.sh
 
 cd ~
 wget "https://github.com/probonopd/AppImageKit/releases/download/knowngood/appimagetool-x86_64.AppImage"

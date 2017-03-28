@@ -19,6 +19,10 @@
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
 cd /
+# Get helper functions
+wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+. ./functions.sh
+rm -f functions.sh
 
 cd /app.Dir
 #Move binary/desktop/icon into AppDir
