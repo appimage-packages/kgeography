@@ -18,7 +18,10 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
-
+arch = `arch`
+date = `date +"%Y%m%d"`
+filename = Metadata::PROJECT + '-git' + date + arch + '.AppImage'.to_s.gsub(/\s+/, "")
+export APPIMAGEFILENAME=filename
 # move me to jenkisnfile
 rm -rfv /app.Dir/*
 
