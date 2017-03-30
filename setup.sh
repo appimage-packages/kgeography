@@ -19,6 +19,7 @@
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 export PATH=/opt/usr/bin:/root/.rbenv/bin:/root.rbenv/shims:$PATH
 
+gem install bundle
 # move me to jenkisnfile
 rm -rfv /app.Dir/*
 
