@@ -23,12 +23,13 @@ export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PA
 rm -rfv /app.Dir/*
 
 cd /home/jenkins
+id -u jenkins
 rbenv local 2.3.1
 gem install gitlab
 bundle install
 
-ls -l /
-ls -l /home/
+ls -lan /home/jenkins/
+ls -ln /home/
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
