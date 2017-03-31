@@ -24,6 +24,8 @@ rm -rfv /app.Dir/*
 
 cd /home/jenkins
 rbenv local 2.3.1
+gem install gitlab
+bundle install
 
 ls -l /
 ls -l /home/
