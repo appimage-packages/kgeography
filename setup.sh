@@ -25,10 +25,12 @@ rm -rfv /app.Dir/*
 cd /home/jenkins
 rbenv local 2.3.1
 
+ls -l /
+ls -l /home/
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
-cd /in/tooling/ci-tooling/aci/spec/ && bundle install
+cd /in/tooling/ci-tooling/aci/spec/
 rspec setup_project_rspec.rb --fail-fast
 rspec dependencies_rspec.rb --fail-fast
 rspec project_rspec.rb --fail-fast
