@@ -30,7 +30,7 @@ ls -l /home/
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
-cd /in/tooling/aci/spec/
+cd /in/tooling/aci/spec/ && bundle install
 rspec setup_project_rspec.rb --fail-fast
 rspec dependencies_rspec.rb --fail-fast
 rspec project_rspec.rb --fail-fast
