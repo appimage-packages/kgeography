@@ -22,7 +22,9 @@ export PATH=/opt/usr/bin:/home/jenkins/.rbenv/bin:/home/jenkins/.rbenv/shims:$PA
 # move me to jenkisnfile
 rm -rfv /app.Dir/*
 
-cd ~
+cd /home/jenkins
+rbenv local 2.3.1
+
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
