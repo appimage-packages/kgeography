@@ -1,6 +1,7 @@
 name: kgeography
 binary: kgeography
-packages: false
+packages:
+  - zsync
   #app specifc
 build_kf5: true
 frameworks:
