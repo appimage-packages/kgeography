@@ -55,7 +55,7 @@ node('linux') {
                        sourceFile: 'appimages/*.zsync', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'UNSTABLE', profileName: 'ds9-apps', userMetadata: []])
                     }
                     stage('Tests') {
-                       step([$class: 'LogParserPublisher', failBuildOnError: true, projectRulePath: 'tooling/ci-tooling/aci/parser.rules', showGraphs: true, unstableOnWarning: true, useProjectRule: true])
+                       step([$class: 'LogParserPublisher', failBuildOnError: true, projectRulePath: 'tooling/aci/parser.rules', showGraphs: true, unstableOnWarning: true, useProjectRule: true])
                     }
                  }
 
