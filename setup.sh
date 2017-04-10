@@ -17,8 +17,13 @@
 #
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+set -e
+set -x
 export PATH=/opt/usr/bin:/root/.rbenv/bin:/root/.rbenv/shims:$PATH
-
+export CPATH=/opt/usr/include/gstreamer-1.0:/opt/usr/include:/opt/usr/include/python3.5:/usr/include
+ln -s /usr/bin/clang++-3.8 /usr/bin/clang++
+ln -s /usr/bin/clang-3.8 /usr/bin/clang
+rm /usr/bin/python && ln -s /opt/usr/bin/python3 /usr/bin/python
 # move me to jenkisnfile
 rm -rfv /app.Dir/*
 
@@ -30,9 +35,41 @@ bundle install
 wget https://github.com/probonopd/linuxdeployqt/releases/download/1/linuxdeployqt-1-x86_64.AppImage
 chmod a+x linuxdeployqt-1-x86_64.AppImage
 
+function error_exit
+{
+	echo "$1" 1>&2
+	exit 1
+}
 
-rspec /in/tooling/aci/spec/setup_project_rspec.rb --fail-fast
-rspec /in/tooling/aci/spec/dependencies_rspec.rb --fail-fast
-rspec /in/tooling/aci/spec/project_rspec.rb --fail-fast
-rspec /in/tooling/aci/spec/recipe_rspec.rb --fail-fast
-rspec /in/tooling/aci/spec/create_appimage_rspec.rb --fail-fast
+if rspec /in/tooling/aci/spec/setup_project_rspec.rb --fail-fast; then
+	echo "Setup Complete"
+else
+	error_exit "$LINENO: An error has occurred.. Aborting."
+fi
+
+if rspec /in/tooling/aci/spec/dependencies_rspec.rb --fail-fast; then
+	echo "Dependencies Complete"
+else
+	error_exit "$LINENO: An error has occurred.. Aborting."
+fi
+
+if rspec /in/tooling/aci/spec/project_rspec.rb --fail-fast; then
+	echo "Project Complete"
+else
+	error_exit "$LINENO: An error has occurred.. Aborting."
+fi
+
+if rspec /in/tooling/aci/spec/recipe_rspec.rb --fail-fast; then
+	echo "Recipe Complete"
+else
+	error_exit "$LINENO: An error has occurred.. Aborting."
+fi
+
+if rspec /in/tooling/aci/spec/create_appimage_rspec.rb --fail-fast; then
+	echo "Recipe Complete"
+else
+	error_exit "$LINENO: An error has occurred.. Aborting."
+fi
+
+
+#rm -rfv /source/*
